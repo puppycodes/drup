@@ -1,6 +1,33 @@
 @charset "utf-8";
 
 
+@font-face {
+  font-family: 'Elizb';
+  src: url('../fonts/Elizb.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Elizb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Elizb.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Elizb.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Elizb.svg#Elizb') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+html {
+   height: 100%;
+}
+
+.cursor
+{
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: 999999999999999;
+pointer-events: none;
+}
+
+
+
 /*-------------------------
 	Simple reset
 --------------------------*/
@@ -12,23 +39,38 @@
 
 
 /*-------------------------
-	page
+	Body
 -------------------------*/
 
-html {
-	 overflow-y: scroll;
-}
-
-
 body {
-	background: white;
-	font: 14px normal Arial, Helvetica, sans-serif;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVQIW2NkYGD4D8SMjEACBP4DAA8oAgK5wqQTAAAAAElFTkSuQmCC)
+	repeat;
+	font: 20px Elizb;
 	z-index: -4;
 	background-size: 4px auto;
 	
 }
 
+a {
+	text-decoration: none !important;
+}
 
+
+/*-------------------------
+	Top Bar
+--------------------------*/
+#top-bar
+{
+position: relative;
+top: 0;
+height: 33px;
+background-color: white;
+border-bottom: solid black 1px;
+font-size: 2em;
+letter-spacing: 11px;
+padding-left: 32px;
+padding-bottom: 5px;
+}
 /*-------------------------
 	File manager
 -------------------------*/
@@ -68,7 +110,7 @@ body {
 }
 
 .filemanager .breadcrumbs a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .filemanager .breadcrumbs .arrow {
@@ -85,21 +127,15 @@ body {
 
 
 .filemanager .search {
-	position: fixed;
-/* padding-right: 30px; */
-cursor: pointer;
-right: 20px;
-top: 20px;
-float: right;
-/* margin-top: 100px; */
-margin: auto;
-font-size: 17px;
-color: #000000;
-display: block;
-width: 85px;
-height: 40px;
-/* text-align: center; */
-z-index: 9999999;
+	position: absolute;
+	padding-right: 30px;
+	cursor: pointer;
+	right: 0;
+	font-size: 17px;
+	color: #ffffff;
+	display: block;
+	width: 40px;
+	height: 40px;
 }
 
 .filemanager .search:before {
@@ -109,7 +145,7 @@ z-index: 9999999;
 	width: 10px;
 	height: 11px;
 	border-radius: 50%;
-	border: 2px solid #000000;
+	border: 2px solid #ffffff;
 	right: 8px;
 }
 
@@ -117,7 +153,7 @@ z-index: 9999999;
 	content: '';
 	width: 3px;
 	height: 10px;
-	background-color: #000000;
+	background-color: #ffffff;
 	border-radius: 2px;
 	position: absolute;
 	top: 23px;
@@ -140,7 +176,7 @@ z-index: 9999999;
 	line-height: 20px;
 	display: none;
 	outline: none;
-	border: 1px solid black;
+	border: none;
 	padding-right: 10px;
 	-webkit-appearance: none;
 }
@@ -168,7 +204,6 @@ z-index: 9999999;
 .filemanager .data {
 	margin-top: 60px;
 	z-index: -3;
-	text-align: center;
 }
 
 .filemanager .data.animated {
@@ -179,8 +214,8 @@ z-index: 9999999;
 .filemanager .data li {
 	border-radius: 3px;
 	/*background-color: #373743;*/
-	width: 300px;
-	height: 300px;
+	width: 130px;
+	height: 70px;
 	list-style-type: none;
 	margin: 10px;
 	display: inline-block;
@@ -199,61 +234,43 @@ z-index: 9999999;
 }
 
 .filemanager .data li a {
-position: absolute;
-bottom: 100px;
-width: 30px;
-height: 30px;
-text-align: center;
-left: 46%;
-color: white;
-background-image: url(../img/download.png);
-background-size: 2em;
-background-repeat: no-repeat;
-
-}
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;}
 
 .filemanager .data li .name {
-	color: #ffffff;
-	font-size: 15px;
+	color: #000000;
+	font-size: 25px;
 	font-weight: 700;
-	line-height: 20px;
+	line-height: 25px;
 	width: 100%;
 	white-space: nowrap;
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	top: 0px;
+	top: -5px;
+	background-color: white;
+	width: 95px;
+	display: block;
+	margin: auto;
 }
 
 .filemanager .data li .details {
-color: #fff;
-font-size: 14px;
-font-weight: 400;
-width: 100%;
-height: 100%;
-max-height: 292px;
-max-width: 296px;
-bottom: 4px;
-left: 4px;
-white-space: nowrap;
-position: absolute;
-text-align: center;
-line-height: 20;
-overflow: hidden;
-opacity: 0;
+	color: #b6c1c9;
+	font-size: 13px;
+	font-weight: 400;
+	width: 55px;
+	height: 10px;
+	top: 64px;
+	white-space: nowrap;
+	position: absolute;
+	display: inline-block;
+	display: none;
 }
-
-
-.filemanager .data li .details:hover {
-
-opacity: 1;
-background: rgba(54, 25, 25, .5);
--webkit-transition: all 0.7s ease;
-transition: all 0.7s ease;
-}
-
-
 
 .filemanager .nothingfound {
 	/*background-color: #373743;*/
@@ -299,9 +316,8 @@ transition: all 0.7s ease;
 @media all and (max-width:965px) {
 
 	.filemanager .data li {
-		width: 300px;
-		margin: 5px 10px;
-	
+		width: 100%;
+		margin: 5px 0;
 	}
 
 }
@@ -558,6 +574,7 @@ footer a.tz:before{
 
 footer .close{
 	position: absolute;
+	cursor: pointer;
 	width: 8px;
 	height: 8px;
 	background: url('http://cdn.tutorialzine.com/misc/enhance/v2_footer_bg.png') no-repeat 0 0px;
@@ -593,7 +610,7 @@ footer #tzine-actions iframe{
 /** ADDITIONS **/
 
 .files
-{}
+{cursor: default !important;}
 
 .space
 {display: none;}
@@ -605,20 +622,83 @@ footer #tzine-actions iframe{
 {display: none !important;}
 
 .search
-{/*display: none !important;*/}
+{display: none !important;}
 
-/* CUSTOM FILE DISPLAY */
-
-.files img
-{
-height: 100%;
-width: auto;
+/* CUSTOM JQUERY WINDOW */
+.ui-dialog-titlebar {
+/* background: black !important; */
+background-image: url(../img/stripe.png) !important;
+/* background-repeat-x: inherit; */
+background-size: 11px !important;
+padding: 0px !important;
+border-radius: 0px;
+border-bottom: 2px solid black !important;
 }
 
-.download-link
-{
-width: 100%;
-height: 100%;
+.ui-draggable .ui-dialog-titlebar {
+cursor: default;
+}
+
+.ui-widget-header{
+border: none;
+background: none;
+color:;
+font-weight: bold;
+}
+
+.ui-widget-content {
+overflow: hidden !important;
+border-bottom: 2px solid black;
+border-right: 2px solid black;
+background: #ffffff;
+color: #222222;
+border-left: 1px solid black;
+border-top: 1px solid black;
+border-radius: 0px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
 position: absolute;
-left: 0;
+left: 10px;
+top: 50%;
+width: 20px;
+margin: -10px 0 0 0;
+padding: 1px;
+height: 20px;
 }
+
+.ui-dialog .ui-dialog-content {
+position: relative;
+border: 0;
+padding: .5em 0em;
+background: none;
+overflow: auto;
+padding-bottom: 0px;
+}
+
+.ui-state-default .ui-icon {
+background-image: none;
+}
+
+:focus {
+outline: -webkit-focus-ring-color auto 0px; outline: 0;
+}
+
+.ui-widget-overlay {
+background: none;
+opacity:0;
+filter: Alpha(Opacity=0);
+/* support: IE8; */
+}
+
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+border: 1px solid black;
+background: white !important;
+font-weight: normal;
+color: white !important;
+border-radius: 0px;
+}
+
+
+

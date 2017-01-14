@@ -312,7 +312,7 @@ $(function(){
 						itemsLength = 'Empty';
 					}
 
-					var folder = $('<li class="folders"></li>');
+					var folder = $('<li class="folders"><a href="'+ f.path +'" title="'+ f.path +'" class="folders">'+icon+'<span class="name">' + name + '</span> <span class="details">' + itemsLength + '</span></a></li>');
 					folder.appendTo(fileList);
 				});
 
@@ -331,7 +331,7 @@ $(function(){
 
 					icon = '<span class="icon file f-'+fileType+'">.'+fileType+'</span>';
 
-					var file = $('<li class="files"><img src="'+ f.path +'" onError="this.onerror=null;this.src=\'\assets/img/none.gif\'\;"></span> <span class="details">'+ name +'<span class="download-link"><a href="'+ f.path +'" download></span></span></li>');
+					var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" id="dialog" class="diopop files '+ fileType +'">'+'<img style="height:40px;" src="assets/img/folder.gif">'+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
 					file.appendTo(fileList);
 				});
 
@@ -380,7 +380,7 @@ $(function(){
 		// This function escapes special html characters in names
 
 		function escapeHTML(text) {
-			return text.replace(/\&/g,'&amp;').replace(/\</g,'&lt;').replace(/\>/g,'&gt;').replace(/\.gif/g,'').replace(/\.jpg/g,'').replace(/\.png/g,'');
+			return text.replace(/\&/g,'&amp;').replace(/\</g,'&lt;').replace(/\>/g,'&gt;').replace(/\.html/g,'');
 		}
 
 		// Convert file sizes from bytes to human readable units
@@ -392,7 +392,21 @@ $(function(){
 			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 		}
 
-	
+
+		$(document).ready(function () {
+    	$(".diopop").click(function () {
+        $("#thedialog").attr('src', $(this).attr("href"));
+        $("#container").dialog({
+            width: 400,
+            height: 450,
+            modal: true,
+            close: function () {
+                $("#thedialog").attr('src', "about:blank");
+            }
+        });
+        return false;
+    });
+});
 
 	});
 });

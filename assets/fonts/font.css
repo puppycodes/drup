@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Elizb';
+  src: url('Elizb.eot'); /* IE9 Compat Modes */
+  src: url('Elizb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Elizb.woff') format('woff'), /* Modern Browsers */
+       url('Elizb.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Elizb.svg#5563be6b5502978ff6ea371e842a57ce') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

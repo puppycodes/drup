@@ -1,2 +1,0 @@
-# drup
-make it easy
